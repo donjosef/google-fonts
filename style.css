@@ -16,6 +16,7 @@ body {
 
 .main_header h1 {
     font-size: 3em;
+    text-transform: uppercase;
 }
 
 
@@ -30,6 +31,11 @@ body {
     width: 100%;
     padding: 10px;
     font-size: 1.3rem;
+    font-family: inherit;
+}
+
+.font_input::placeholder {
+    font-family: inherit;
 }
 
 .font_list {
@@ -55,6 +61,13 @@ body {
     cursor: pointer;
 }
 
+#font_link {
+    font-size: 0.8rem;
+    max-width: 100%;
+    word-break: break-word;
+    font-family: sans-serif;
+}
+
 /* MAIN SECTION */
 
 .main {
@@ -71,6 +84,10 @@ body {
 
 .wrapper h1 {
     margin: 0;
+}
+
+.wrapper h2 {
+    font-weight: 300;
 }
 
 footer {
