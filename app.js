@@ -63,8 +63,10 @@ function setFont(e) {
     if (e.target.tagName === 'LI') {
         const html = document.documentElement;
         html.style.fontFamily = e.target.textContent;
+        fontSearch.value = "";
+        fontSearch.placeholder = e.target.textContent;
         injectGoogleLink(e.target);
-        removeListItems();
+        removeListItems();   
     }
 }
 
