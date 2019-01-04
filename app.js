@@ -20,11 +20,20 @@ function filterFonts(e) {
         const regEx = new RegExp('^' + e.target.value, 'i'); //test if starts with, ignoring case
         const filtered = fonts.filter(({ family }) => regEx.test(family));
         displayFonts(filtered);
+    } else {
+        removeListItems();
     }
 }
 
 function displayFonts(fonts) {
     list.innerHTML = fonts.map(({ family, variants, subsets }) => `<li class="font_item" data-family="${family}" data-variants="${variants}" data-subsets="${subsets}">${family}</li>`).join("");
+}
+
+function removeListItems() {
+    /*Remove list items as soon as click happens*/
+    Array.from(list.children).forEach(ch => {
+        ch.remove()
+    });
 }
 
 fontSearch.addEventListener('input', filterFonts);
