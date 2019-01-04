@@ -64,6 +64,7 @@ function setFont(e) {
         const html = document.documentElement;
         html.style.fontFamily = e.target.textContent;
         injectGoogleLink(e.target);
+        removeListItems();
     }
 }
 
