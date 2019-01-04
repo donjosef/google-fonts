@@ -36,7 +36,40 @@ function removeListItems() {
     });
 }
 
+function injectGoogleLink(li) {
+    /*Format font family string with a + between spaces for google link to work*/
+    let family = li.dataset.family.split(" ").join("+");
+    let variants = li.dataset.variants;
+    let subsets = li.dataset.subsets;
+    const head = document.querySelector('head'); //parent
+    const link = document.createElement('link');
+
+    let href = `https://fonts.googleapis.com/css?family=${family}:${variants}&subsets=${subsets}`;
+
+    link.id = 'google_link';
+    link.setAttribute('href', href);
+    link.setAttribute('rel', 'stylesheet');
+
+    if (head.contains(document.querySelector('#google_link'))) {
+        head.replaceChild(link, document.querySelector('#google_link'));
+    } else {
+        head.insertBefore(link, head.childNodes[0]); //At the very beginning insert google fonts link
+    }
+
+    fontLink.textContent = link.outerHTML;
+}
+
+function setFont(e) {
+    if (e.target.tagName === 'LI') {
+        const html = document.documentElement;
+        html.style.fontFamily = e.target.textContent;
+        injectGoogleLink(e.target);
+    }
+}
+
 fontSearch.addEventListener('input', filterFonts);
+list.addEventListener('click', setFont);
+
 
 
 
