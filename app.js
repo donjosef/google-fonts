@@ -22,7 +22,7 @@ function filterFonts(e) {
         const filtered = fonts.filter(({ family }) => regEx.test(family));
         displayFonts(filtered);
     } else {
-        removeListItems();
+        removeListItems(list);
     }
 }
 
