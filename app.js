@@ -7,7 +7,7 @@ const fonts = [];
 //Request google fonts with axios
 document.addEventListener('DOMContentLoaded', () => {
     fontSearch.disabled = true;
-    axios.get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyArDywurj-c4U_vGDUXbOd-oViu9yMHo10')
+    axios.get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyCWH7CfLizoL_KjHxClDVEZ1vdaWz5Q4GQ')
         .then(res => res.data)
         .then(data => {
             fonts.push(...data.items);
@@ -30,7 +30,7 @@ function displayFonts(fonts) {
     list.innerHTML = fonts.map(({ family, variants, subsets }) => `<li class="font_item" data-family="${family}" data-variants="${variants}" data-subsets="${subsets}">${family}</li>`).join("");
 }
 
-function removeListItems() {
+function removeListItems(list) {
     /*Remove list items as soon as click happens*/
     Array.from(list.children).forEach(ch => {
         ch.remove()
@@ -67,18 +67,12 @@ function setFont(e) {
         fontSearch.value = "";
         fontSearch.placeholder = e.target.textContent;
         injectGoogleLink(e.target);
-        removeListItems();   
+        removeListItems(list);   
     }
 }
 
 fontSearch.addEventListener('input', filterFonts);
 list.addEventListener('click', setFont);
-
-
-
-
-
-
 
 
 
